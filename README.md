@@ -85,20 +85,23 @@ Open `http://127.0.0.1:8000/` in a browser. The database migration command creat
 
 Tests use Django's test database and Django test client. They create their own users, profiles, jobs, and applications. Resume uploads use a temporary media directory that is removed after tests.
 
-```powershell
-python manage.py test
-```
+27 tests passed successfully.
 
 The test suite covers account workflows, role and ownership restrictions, job management/search/pagination, application creation and duplicate prevention, document validation, status updates, and protected downloads.
 
 ## Screenshots
 
-Add screenshots here when available, for example:
+### Homepage
+![CareerConnect Homepage](screenshots/homepage.png)
 
-- Home and job search: `docs/screenshots/home.png`
-- Job details and application form: `docs/screenshots/application.png`
-- Employer job management: `docs/screenshots/employer-jobs.png`
+### Job Details
+![Job Details](screenshots/job-details.png)
 
+### Employer Job Management
+![Employer Job Management](screenshots/employer-jobs.png)
+
+### Candidate Application Tracking
+![My Applications](screenshots/my-applications.png)
 ## Future improvements
 
 - Add deployment-specific database, static file, and media storage configuration.
