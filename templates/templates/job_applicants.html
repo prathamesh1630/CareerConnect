@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block content %}<h1 class="h2 mb-4">Job applicants</h1><div class="table-responsive card border-0 shadow-sm"><table class="table">
+<thead><tr><th>Candidate</th><th>Applied</th><th>Status</th><th>Resume</th><th></th></tr></thead><tbody>{% for application in applications %}
+<tr><td>{{ application.candidate.full_name }}</td><td>{{ application.applied_at|date:'d M Y' }}</td><td>{{ application.status }}</td><td><a class="btn btn-sm btn-outline-secondary" href="{% url 'download_resume' application.pk %}">Download</a></td><td><a class="btn btn-sm btn-outline-primary" href="{% url 'updatestatus' application.pk %}">Update</a></td></tr>
+{% empty %}<tr><td colspan="5" class="text-center p-4">No applicants yet.</td></tr>{% endfor %}</tbody></table></div>{% endblock %}

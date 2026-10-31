@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% load crispy_forms_tags %}{% block title %}Find Jobs{% endblock %}{% block content %}
+<h1 class="h2 mb-4">Find your next opportunity</h1><div class="card border-0 shadow-sm mb-4"><div class="card-body">
+<form method="get"><div class="row g-3"><div class="col-md-3">{{ search_form.location|as_crispy_field }}</div>
+<div class="col-md-3">{{ search_form.job_type|as_crispy_field }}</div><div class="col-md-3">{{ search_form.work_mode|as_crispy_field }}</div>
+<div class="col-md-3">{{ search_form.experience_level|as_crispy_field }}</div></div>
+<button class="btn btn-primary mt-3">Search</button><a href="{% url 'joblist' %}" class="btn btn-outline-secondary mt-3">Clear</a></form></div></div>
+{% for job in jobs %}<div class="card border-0 shadow-sm mb-3"><div class="card-body d-flex justify-content-between align-items-center">
+<div><h2 class="h5">{{ job.title }}</h2><p class="text-muted mb-2">{{ job.company_name }} · {{ job.location }}</p>
+<span class="badge text-bg-light">{{ job.job_type }}</span> <span class="badge text-bg-light">{{ job.work_mode }}</span></div>
+<a href="{% url 'jobdetail' job.pk %}" class="btn btn-primary">View job</a></div></div>
+{% empty %}<div class="alert alert-info">No matching jobs found.</div>{% endfor %}
+{% if is_paginated %}<nav><ul class="pagination justify-content-center">{% if page_obj.has_previous %}<li class="page-item"><a class="page-link" href="{% querystring page=page_obj.previous_page_number %}">Previous</a></li>{% endif %}
+<li class="page-item disabled"><span class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span></li>
+{% if page_obj.has_next %}<li class="page-item"><a class="page-link" href="{% querystring page=page_obj.next_page_number %}">Next</a></li>{% endif %}</ul></nav>{% endif %}{% endblock %}

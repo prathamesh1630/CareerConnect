@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block title %}Home | CareerConnect{% endblock %}{% block content %}
+<section class="p-5 mb-4 bg-white rounded-4 shadow-sm"><span class="badge text-bg-primary">Career opportunities</span>
+<h1 class="display-5 fw-bold mt-3">Find a job that moves you forward.</h1><p class="lead text-muted">Explore opportunities and track your applications.</p>
+<a href="{% url 'joblist' %}" class="btn btn-primary btn-lg">Explore jobs</a></section>
+<h2 class="h4 mb-3">Latest jobs</h2><div class="row g-3">{% for job in jobs %}<div class="col-md-6 col-xl-4">
+<div class="card h-100 shadow-sm border-0"><div class="card-body"><h3 class="h5">{{ job.title }}</h3>
+<p class="text-muted">{{ job.company_name }} · {{ job.location }}</p><span class="badge text-bg-light">{{ job.job_type }}</span>
+<a href="{% url 'jobdetail' job.pk %}" class="btn btn-outline-primary btn-sm d-block mt-3">View details</a></div></div></div>
+{% empty %}<p class="text-muted">No jobs available yet.</p>{% endfor %}</div>{% endblock %}

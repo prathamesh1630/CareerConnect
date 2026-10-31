@@ -1,0 +1,2 @@
+{% extends 'base.html' %}{% block content %}<div class="card border-0 shadow-sm"><div class="card-body p-4"><h1 class="h4 text-danger">Delete {{ job.title }}?</h1>
+<p>This action cannot be undone.</p><form method="post">{% csrf_token %}<button class="btn btn-danger">Confirm delete</button><a class="btn btn-outline-secondary" href="{% url 'employerjobs' %}">Cancel</a></form></div></div>{% endblock %}
